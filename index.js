@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const errorHandler = require("./middleware/error-handler");
 const ErrorResponse = require("./utils/error-response");
 const mongoose = require("mongoose");
-const cors = require("cors");
+//const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 dotenv.config();
@@ -26,15 +26,15 @@ app.use("/uploads/images", express.static(path.join("uploads", "images")));
 app.use(express.static(path.resolve("client", "dist")));
 
 //CORS allow
-app.use(
-  cors({
-    credentials: true,
-    origin: true,
-    //origin: "localhost:3000",
-    //allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-    //methods: "DELETE, PUT, GET, PATCH, POST, OPTIONS",
-  })
-);
+// app.use(
+//   cors({
+//     credentials: true,
+//     //origin: true,
+//     //origin: "localhost:3000",
+//     //allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+//     //methods: "DELETE, PUT, GET, PATCH, POST, OPTIONS",
+//   })
+// );
 app.use(cookieParser());
 app.use(express.json());
 

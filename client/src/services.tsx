@@ -22,9 +22,9 @@ const apiClient: TClient = {
       method: "post",
       body: JSON.stringify(body),
       headers: {
-        Authorization: `Bearer ${getToken()}`,
+        //Authorization: `Bearer ${getToken()}`,
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        //"Access-Control-Allow-Origin": "*",
       },
     });
     return res.json();
@@ -33,9 +33,9 @@ const apiClient: TClient = {
     const res = await fetch(endpoint, {
       credentials: "include",
       headers: {
-        Authorization: `Bearer ${getToken()}`,
+        //Authorization: `Bearer ${getToken()}`,
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        //"Access-Control-Allow-Origin": "*",
       },
     });
     return res.json();
@@ -52,8 +52,7 @@ export const authenticate = async (email: string, password: string) => {
   }
 };
 
-export const verifyToken = async (token = localStorage.getItem("vb_token")) => {
-  if (!token) return;
+export const verifyToken = async () => {
   let userId;
   try {
     const data = await apiClient.get<{ success: string; userId: string }>(
@@ -64,6 +63,10 @@ export const verifyToken = async (token = localStorage.getItem("vb_token")) => {
     console.log(error.message);
   }
   return userId || false;
+};
+
+export const logout = async () => {
+  return apiClient.get("/api/v1/auth/logout");
 };
 
 export const getUsers = async () => {

@@ -30,7 +30,7 @@ const login = async (req, res, next) => {
 
   const isSecure = process.env.COOKIE === "secure" ? { secure: true } : {};
 
-  const cookieOptions = { httpOnly: true, maxAge: 3600 * 1000, ...isSecure };
+  const cookieOptions = { httpOnly: true, maxAge: 3600 * 1000, ...isSecure, sameSite: "strict" };
 
   res
     .status(200)
@@ -87,7 +87,10 @@ const register = async (req, res, next) => {
     { expiresIn: "7d" }
   );
 
-  res.status(201).json({
+  const isSecure = process.env.COOKIE === "secure";
+  const cookieOptions = { httpOnly: true, maxAge: 3600 * 1000, ...isSecure, sameSite: "strict" };
+
+  res.status(201).cookie("token", token, cookieOptions).json({
     userId: createdUser.id,
     email: createdUser.email,
     date: createdUser.date,
@@ -106,8 +109,13 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+const logout = (req, res) => {
+  return res.clearCookie("token").json({ message: "success" });
+};
+
 module.exports = {
   login: asyncUtil(login),
   register: asyncUtil(register),
   verifyToken: asyncUtil(verifyToken),
+  logout: asyncUtil(logout),
 };

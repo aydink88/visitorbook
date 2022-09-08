@@ -1,7 +1,7 @@
 import { type ComponentChildren, createContext } from "preact";
 import { useCallback, useContext, useEffect, useReducer, useState } from "preact/hooks";
 import { TStatus } from "src/types";
-import { verifyToken, authenticate as authService } from "../services";
+import { verifyToken, authenticate as authService, logout as logoutService } from "../services";
 
 type TAuth = { userId: any; error: any; status: TStatus };
 type TAuthContext = {
@@ -50,8 +50,7 @@ export default function AppContextProvider({ children }: { children: ComponentCh
   }, []);
 
   const logout = useCallback(() => {
-    localStorage.removeItem("vb_token");
-    authDispatch({ type: "idle" });
+    logoutService().finally(() => authDispatch({ type: "idle" }));
   }, []);
 
   useEffect(() => {

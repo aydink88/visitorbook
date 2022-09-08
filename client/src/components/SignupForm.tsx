@@ -47,7 +47,7 @@ const SignupForm = () => {
 
   return (
     <Col md={12} lg={6} className="mx-auto my-5">
-      <Form onSubmit={handleSignup}>
+      <Form onSubmit={handleSignup} className="d-flex flex-column gap-4">
         <Form.Group as={Row} controlId="formUsername">
           <Form.Label column sm={2}>
             Username

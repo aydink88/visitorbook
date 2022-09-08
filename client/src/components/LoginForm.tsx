@@ -26,7 +26,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <Form onSubmit={handleLogin}>
+      <Form onSubmit={handleLogin} className="d-flex flex-column gap-4">
         <Form.Group as={Row} controlId="formHorizontalEmail">
           <Form.Label column sm={3}>
             Email
@@ -65,13 +65,9 @@ const LoginForm = () => {
           </Col>
         </Form.Group>
 
-        <Form.Group as={Row}>
-          <Col sm={9} className="ml-auto">
-            <Button type="submit" className="w-100">
-              Log in
-            </Button>
-          </Col>
-        </Form.Group>
+        <Button type="submit" className="w-100">
+          Log in
+        </Button>
       </Form>
     </>
   );

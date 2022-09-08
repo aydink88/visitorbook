@@ -5,7 +5,6 @@ const { validationResult } = require("express-validator");
 const ErrorResponse = require("../utils/error-response");
 
 const getUsers = async (req, res, next) => {
-  console.log(req.cookies);
   let users;
   try {
     users = await UserModel.find();
