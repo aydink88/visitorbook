@@ -25,7 +25,6 @@ const apiClient: TClient = {
         Authorization: `Bearer ${getToken()}`,
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "same-site": "none",
       },
     });
     return res.json();

@@ -28,7 +28,9 @@ const login = async (req, res, next) => {
     { expiresIn: "7d" }
   );
 
-  const cookieOptions = { httpOnly: true, maxAge: 3600 * 1000, secure: true };
+  const isSecure = process.env.COOKIE === "secure" ? { secure: true } : {};
+
+  const cookieOptions = { httpOnly: true, maxAge: 3600 * 1000, ...isSecure };
 
   res
     .status(200)
