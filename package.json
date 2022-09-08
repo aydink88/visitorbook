@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node index",
-    "dev": "node-dev --notify=false index"
+    "dev": "node-dev --notify=false index",
+    "build": "yarn install --ignore-engines && yarn --cwd client install --ignore-engines && yarn --cwd client build"
   },
   "author": "Aydin Bulut",
   "license": "ISC",
