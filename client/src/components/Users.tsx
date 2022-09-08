@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Card } from "react-bootstrap";
-import { TUser } from "src/types";
+import { TUser } from "../types";
+import { getUsers } from "../services";
 
 const Users = () => {
   const [users, setUsers] = useState<TUser[]>([]);
 
-  const getUsers = async () => {
-    const response = await fetch("/api/v1/users", {
-      credentials: "include",
-      headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" },
-    });
-    const userList = await response.json();
-    setUsers(userList.users);
-  };
-
   useEffect(() => {
-    getUsers();
+    getUsers().then((users) => setUsers(users));
   }, []);
 
   return (

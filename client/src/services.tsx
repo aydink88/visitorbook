@@ -18,11 +18,14 @@ const getToken = () => localStorage.getItem("vb_token");
 const apiClient: TClient = {
   async post(endpoint: string, body: object) {
     const res = await fetch(endpoint, {
+      credentials: "include",
       method: "post",
       body: JSON.stringify(body),
       headers: {
         Authorization: `Bearer ${getToken()}`,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "same-site": "none",
       },
     });
     return res.json();
@@ -33,6 +36,7 @@ const apiClient: TClient = {
       headers: {
         Authorization: `Bearer ${getToken()}`,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     return res.json();
@@ -61,4 +65,13 @@ export const verifyToken = async (token = localStorage.getItem("vb_token")) => {
     console.log(error.message);
   }
   return userId || false;
+};
+
+export const getUsers = async () => {
+  try {
+    const data = await apiClient.get("/api/v1/users");
+    return data.users;
+  } catch (error) {
+    console.log(error);
+  }
 };
