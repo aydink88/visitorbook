@@ -1,0 +1,10 @@
+// Import Bootstrap and its default variables
+@import "./variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "./bootswatch";
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
