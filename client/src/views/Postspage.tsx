@@ -1,5 +1,5 @@
-import Posts from "../components/Posts";
-import Sidebar from "../components/common/Sidebar";
+import Posts from "src/components/Posts";
+import Sidebar from "src/components/common/Sidebar";
 import { Row, Col } from "react-bootstrap";
 
 const Postspage = () => {

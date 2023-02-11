@@ -1,4 +1,4 @@
-import Landing from "../components/Landing";
+import Landing from "src/components/Landing";
 
 const HomepageLayout = () => <Landing />;
 

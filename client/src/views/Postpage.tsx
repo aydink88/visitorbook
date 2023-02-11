@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import Sidebar from "../components/common/Sidebar";
-import CommentForm from "../components/CommentForm";
-import Comments from "../components/Comments";
-import PostContent from "../components/PostContent";
+import { useEffect, useState } from "preact/hooks";
+import Sidebar from "src/components/common/Sidebar";
+import CommentForm from "src/components/CommentForm";
+import Comments from "src/components/Comments";
+import PostContent from "src/components/PostContent";
 import { Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { TPost } from "src/types";

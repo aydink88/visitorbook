@@ -1,6 +1,6 @@
-import SearchWidget from "../SearchWidget";
-import CategoriesWidget from "../CategoriesWidget";
-import SideWidget from "../SideWidget";
+import SearchWidget from "src/components/SearchWidget";
+import CategoriesWidget from "src/components/CategoriesWidget";
+import SideWidget from "src/components/SideWidget";
 
 const SideContainer = () => {
   return (

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "preact/hooks";
 import { Link } from "react-router-dom";
 import { Col, Row, Card } from "react-bootstrap";
-import { TUser } from "../types";
-import { getUsers } from "../services";
+import { TUser } from "src/types";
+import { getUsers } from "src/services";
 
 const Users = () => {
   const [users, setUsers] = useState<TUser[]>([]);

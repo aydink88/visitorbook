@@ -10,12 +10,17 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
-      "/api": "http://localhost:5000",
+      "/api": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        secure: false,
+      },
       //"/api": "http://visitorbook.onrender.com",
     },
   },
   resolve: {
     alias: [
+      { find: "src", replacement: "./src" },
       { find: "react", replacement: "preact/compat" },
       { find: "react-dom/test-utils", replacement: "preact/test-utils" },
       { find: "react-dom", replacement: "preact/compat" },

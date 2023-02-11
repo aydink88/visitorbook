@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import { useAuthContext } from "../contexts/auth";
+import { useEffect, useState } from 'preact/hooks';
+import { useNavigate } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import { useAuthContext } from 'src/contexts/auth';
 
 const SignupForm = () => {
   const { auth } = useAuthContext();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [avatar, setAvatar] = useState<File>();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (auth.userId) navigate("/");
+    if (auth.userId) navigate('/');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.userId]);
 
@@ -24,22 +24,22 @@ const SignupForm = () => {
     e.preventDefault();
     console.log(e);
     const formData = new FormData();
-    formData.append("username", username);
-    formData.append("email", email);
-    formData.append("password", password);
-    formData.append("avatar", avatar!);
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('avatar', avatar!);
     try {
-      const res = await fetch("http://localhost:5000/api/v1/auth/register", {
-        method: "post",
+      const res = await fetch('/api/v1/auth/register', {
+        method: 'post',
         headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${localStorage.getItem("vb_token")}`,
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('vb_token')}`,
         },
         body: formData,
       });
       const data = await res.json();
-      localStorage.setItem("token", data.token);
-      navigate("/");
+      localStorage.setItem('token', data.token);
+      navigate('/');
     } catch (err) {
       console.log(err);
     }
@@ -111,7 +111,7 @@ const SignupForm = () => {
           <Form.Check label="Remember me" />
         </Form.Group>
 
-        <Form.Group className="d-flex justify-content-end" style={{ gap: "1rem" }}>
+        <Form.Group className="d-flex justify-content-end" style={{ gap: '1rem' }}>
           <Button type="button">Clear Form</Button>
           <Button type="submit">Sign Up</Button>
         </Form.Group>

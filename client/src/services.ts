@@ -22,9 +22,7 @@ const apiClient: TClient = {
       method: "post",
       body: JSON.stringify(body),
       headers: {
-        //Authorization: `Bearer ${getToken()}`,
         "Content-Type": "application/json",
-        //"Access-Control-Allow-Origin": "*",
       },
     });
     return res.json();
@@ -33,9 +31,7 @@ const apiClient: TClient = {
     const res = await fetch(endpoint, {
       credentials: "include",
       headers: {
-        //Authorization: `Bearer ${getToken()}`,
         "Content-Type": "application/json",
-        //"Access-Control-Allow-Origin": "*",
       },
     });
     return res.json();
@@ -76,4 +72,13 @@ export const getUsers = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const createPost = async (formData: FormData) => {
+  const res = await fetch("/api/v1/posts", {
+    credentials: "include",
+    method: "post",
+    body: formData,
+  });
+  return res.json();
 };

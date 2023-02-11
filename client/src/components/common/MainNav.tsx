@@ -2,7 +2,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
 
-import AuthButtons from "../AuthButtons";
+import AuthButtons from "src/components/AuthButtons";
 
 const MainNav = () => {
   return (

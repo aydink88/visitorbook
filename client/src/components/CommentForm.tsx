@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "preact/hooks";
 import { Card, Form, InputGroup, FormControl, Button } from "react-bootstrap";
 
 const CommentForm = () => {

@@ -1,4 +1,4 @@
-import Sidebar from "../components/common/Sidebar";
+import Sidebar from "src/components/common/Sidebar";
 import { Row, Col } from "react-bootstrap";
 
 const Profilepage = () => {

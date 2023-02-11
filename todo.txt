@@ -1,0 +1,3 @@
+- toast for notications
+-  //redirect after creating post, maybe show a modal or toast or alert
+- create a landing page

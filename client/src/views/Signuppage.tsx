@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import SignupForm from "../components/SignupForm";
-import { useAuthContext } from "../contexts/auth";
+import SignupForm from "src/components/SignupForm";
+import { useAuthContext } from "src/contexts/auth";
 
 const Signuppage = () => {
   const { auth } = useAuthContext();

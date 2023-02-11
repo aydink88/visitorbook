@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card, Row, Col } from "react-bootstrap";
-import useAsync from "../hooks/useAsync";
-import { TPost } from "../types";
+import useAsync from "src/hooks/useAsync";
+import { TPost } from "src/types";
 import { useEffect } from "preact/hooks";
 
 const Posts = () => {

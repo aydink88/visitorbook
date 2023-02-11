@@ -1,24 +1,16 @@
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-import { useAuthContext } from "../contexts/auth";
-import { useEffect } from "react";
+import { useAuthContext } from "src/contexts/auth";
 import { Link, useNavigate } from "react-router-dom";
 
 const AuthButtons = ({ variant }: { variant: string }) => {
   const { auth, logout } = useAuthContext();
   const navigate = useNavigate();
 
-  // if (localStorage.getItem("token") && !store.isAuth) {
-  //   dispatch({ type: "LOGIN_SUCCESS" });
-  // }
   const onLogout = () => {
     logout();
     navigate("/");
   };
-
-  useEffect(() => {
-    console.log("authbuttons use effect");
-  }, []);
 
   if (auth.userId)
     return (

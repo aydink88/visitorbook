@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState } from "preact/hooks";
 import { Form, Button } from "react-bootstrap";
+import { createPost } from "src/services";
 
 const CreatePost = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -14,30 +15,14 @@ const CreatePost = () => {
     formData.append("image", image!);
     formData.append("title", title);
     formData.append("text", text);
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      return;
-    }
-
-    try {
-      const res = await fetch("http://localhost:5000/api/v1/posts", {
-        method: "post",
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${localStorage.getItem("vb_token")}`,
-        },
-        body: formData,
-      });
-      const data = await res.json();
-    } catch (err) {
-      setErrors((prev) => [...prev, err]);
-    }
+    createPost(formData)
+      .then((data) => console.log(data))
+      .catch((err) => setErrors((prev) => [...prev, err]));
   };
 
   return (
-    <div className="my-4">
-      <Form onSubmit={handleSubmit}>
+    <div className="my-4 w-50">
+      <Form onSubmit={handleSubmit} className="d-flex flex-column gap-4">
         <Form.Group controlId="title">
           <Form.Label>Title</Form.Label>
           <Form.Control

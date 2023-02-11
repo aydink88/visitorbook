@@ -1,19 +1,17 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./views/Homepage";
-import Postspage from "./views/Postspage";
-import Userspage from "./views/Userspage";
-import Loginpage from "./views/Loginpage";
-import MainNav from "./components/common/MainNav";
-import Footer from "./components/common/Footer";
-import Signuppage from "./views/Signuppage";
-import Postpage from "./views/Postpage";
-import Profilepage from "./views/Profilepage";
-import { Container } from "react-bootstrap";
-import CreatePost from "./components/CreatePost";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Homepage from './views/Homepage';
+import Postspage from './views/Postspage';
+import Userspage from './views/Userspage';
+import Loginpage from './views/Loginpage';
+import MainNav from './components/common/MainNav';
+import Footer from './components/common/Footer';
+import Signuppage from './views/Signuppage';
+import Postpage from './views/Postpage';
+import Profilepage from './views/Profilepage';
+import { Container } from 'react-bootstrap';
+import CreatePost from './components/CreatePost';
 
 function App() {
-  // const { value:auth, status, error } = useAuthContext();
-
   return (
     <BrowserRouter>
       <MainNav />
