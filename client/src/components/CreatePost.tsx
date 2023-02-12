@@ -1,20 +1,21 @@
-import { useState } from "preact/hooks";
-import { Form, Button } from "react-bootstrap";
-import { createPost } from "src/services";
+import { useState } from 'preact/hooks';
+import { Form, Button } from 'react-bootstrap';
+import { createPost } from 'src/services';
+import type { TargetedEvent } from 'preact/compat';
 
 const CreatePost = () => {
   const [image, setImage] = useState<File | null>(null);
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
+  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
   const [errors, setErrors] = useState<any[]>([]);
 
   //redirect after creating post, maybe show a modal or toast or alert
   const handleSubmit = async (e: FormDataEvent) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("image", image!);
-    formData.append("title", title);
-    formData.append("text", text);
+    formData.append('image', image!);
+    formData.append('title', title);
+    formData.append('text', text);
     createPost(formData)
       .then((data) => console.log(data))
       .catch((err) => setErrors((prev) => [...prev, err]));
@@ -29,7 +30,7 @@ const CreatePost = () => {
             type="text"
             placeholder="Enter a title"
             value={title}
-            onChange={(e: InputEvent) => {
+            onChange={(e: TargetedEvent) => {
               const target = e.target as HTMLInputElement;
               setTitle(target.value);
             }}
@@ -43,7 +44,7 @@ const CreatePost = () => {
             rows={5}
             placeholder="Post Content"
             value={text}
-            onChange={(e: InputEvent) => {
+            onChange={(e: TargetedEvent) => {
               const target = e.target as HTMLTextAreaElement;
               setText(target.value);
             }}
@@ -55,7 +56,7 @@ const CreatePost = () => {
             id="file"
             name="myImage"
             label="picture"
-            onChange={(e: InputEvent) => {
+            onChange={(e: TargetedEvent) => {
               const target = e.target as HTMLInputElement;
               const files = target.files as FileList;
               setImage(files[0]);

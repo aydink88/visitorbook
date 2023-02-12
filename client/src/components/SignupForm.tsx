@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useAuthContext } from 'src/contexts/auth';
+import type { TargetedEvent } from 'preact/compat';
 
 const SignupForm = () => {
   const { auth } = useAuthContext();
@@ -32,7 +33,7 @@ const SignupForm = () => {
       const res = await fetch('/api/v1/auth/register', {
         method: 'post',
         headers: {
-          'Content-Type': 'multipart/form-data',
+          //'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${localStorage.getItem('vb_token')}`,
         },
         body: formData,
@@ -48,7 +49,7 @@ const SignupForm = () => {
   return (
     <Col md={12} lg={6} className="mx-auto my-5">
       <Form onSubmit={handleSignup} className="d-flex flex-column gap-4">
-        <Form.Group as={Row} controlId="formUsername">
+        <Form.Group as={Row as any} controlId="formUsername">
           <Form.Label column sm={2}>
             Username
           </Form.Label>
@@ -56,14 +57,14 @@ const SignupForm = () => {
             <Form.Control
               type="text"
               placeholder="User Name"
-              onChange={(e: InputEvent) => {
+              onChange={(e: TargetedEvent) => {
                 const target = e.target as HTMLInputElement;
                 setUsername(target.value);
               }}
             />
           </Col>
         </Form.Group>
-        <Form.Group as={Row} controlId="formEmail">
+        <Form.Group as={Row as any} controlId="formEmail">
           <Form.Label column sm={2}>
             Email
           </Form.Label>
@@ -71,7 +72,7 @@ const SignupForm = () => {
             <Form.Control
               type="email"
               placeholder="Email"
-              onChange={(e: InputEvent) => {
+              onChange={(e: TargetedEvent) => {
                 const target = e.target as HTMLInputElement;
                 setEmail(target.value);
               }}
@@ -79,7 +80,7 @@ const SignupForm = () => {
           </Col>
         </Form.Group>
 
-        <Form.Group as={Row} controlId="formPassword">
+        <Form.Group as={Row as any} controlId="formPassword">
           <Form.Label column sm={2}>
             Password
           </Form.Label>
@@ -87,7 +88,7 @@ const SignupForm = () => {
             <Form.Control
               type="password"
               placeholder="Password"
-              onChange={(e: InputEvent) => {
+              onChange={(e: TargetedEvent) => {
                 const target = e.target as HTMLInputElement;
                 setPassword(target.value);
               }}
@@ -99,7 +100,7 @@ const SignupForm = () => {
             type="file"
             id="avatar"
             label="Profile picture"
-            onChange={(e: InputEvent) => {
+            onChange={(e: TargetedEvent) => {
               const target = e.target as HTMLInputElement;
               const files = target.files as FileList;
               setAvatar(files[0]);
